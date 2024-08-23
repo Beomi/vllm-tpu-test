@@ -25,6 +25,10 @@ class TpuCommunicator:
         global_rank = dist.get_rank(group)
         global_world_size = dist.get_world_size(group)
         num_nodes = len(ray.nodes())
+        print("group:", group)
+        print("global_rank:", global_rank)
+        print("global_world_size:", global_world_size)
+        print("num_nodes:", num_nodes)
         local_world_size = global_world_size // num_nodes
         local_rank = global_rank % local_world_size
         pjrt.initialize_multiprocess(local_rank, local_world_size)
